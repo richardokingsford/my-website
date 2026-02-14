@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richardo's E‑Library</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f9;
+            color: #333
+        }
+        
+        header {
+            background: #4a90e2;
+            color: #fff;
+            padding: 25px;
+            text-align: center
+        }
+        
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px
+        }
+        
+        .logo {
+            width: 42px;
+            height: 42px;
+            transition: transform .3s, filter .3s
+        }
+        
+        .logo:hover {
+            transform: scale(1.15) rotate(-5deg)
+        }
+        
+        nav {
+            background: #222;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0
+        }
+        
+        nav a {
+            color: #fff;
+            margin: 0 18px;
+            text-decoration: none;
+            font-size: 1.1em
+        }
+        
+        nav a:hover {
+            color: #4a90e2
+        }
+        
+        section {
+            padding: 60px 20px
+        }
+        
+        .hero {
+            text-align: center;
+            max-width: 900px;
+            margin: auto
+        }
+        
+        .hero h2 {
+            font-size: 2.3em
+        }
+        
+        .hero p {
+            font-size: 1.1em;
+            color: #555
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap
+        }
+        
+        .stat-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 220px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .1)
+        }
+        
+        .stat-box h3 {
+            font-size: 2.2em;
+            color: #4a90e2;
+            margin: 0
+        }
+        /* BOOKS SECTION */
+        
+        .library-bg {
+            background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794') center/cover no-repeat;
+            border: 20px solid #7b4a12;
+            box-shadow: inset 0 0 0 1000px rgba(255, 248, 220, 0.85);
+        }
+        
+        #books-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+        
+        .book-card {
+            background: #fff;
+            width: 240px;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .15)
+        }
+        
+        .book-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover
+        }
+        
+        .read-button {
+            margin-top: 10px;
+            padding: 10px 18px;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer
+        }
+        
+        #about,
+        #contact {
+            max-width: 900px;
+            margin: auto
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            color: #fff;
+            text-align: center;
+            padding: 15px
+        }
+        /* NIGHT MODE */
+        
+        .dark {
+            background: #111
+        }
+        
+        .dark,
+        .dark * {
+            color: #fff !important
+        }
+        
+        .dark header,
+        .dark nav,
+        .dark footer {
+            background: #000
+        }
+        
+        .dark .logo {
+            filter: invert(1)
+        }
+        
+        .dark .library-bg {
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.75)
+        }
+        
+        .dark .book-card,
+        .dark .stat-box {
+            background: #1e1e1e
+        }
+        /* KEEP BOOKS HEADING BLACK */
+        
+        .dark .books-heading,
+        .dark .books-subtext,
+        .dark .filter-btn {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 2px solid #4a90e2;
+            cursor: pointer;
+            /* pointer */
+            background: transparent;
+            color: #4a90e2;
+            font-weight: 600;
+            user-select: none;
+            transition: background .3s, color .3s, transform .15s, box-shadow .15s;
+        }
+        
+        .filter-btn:hover {
+            background: #4a90e2;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+        }
+        
+        .filter-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+        }
+        /* DAY MODE hover – same interaction feel as night mode */
+        
+        .filter-btn:hover {
+            background: #333;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn:hover {
+            background: #4a90e2;
+            color: #fff;
+        }
+        
+        .filter-btn:hover {
+            background: #4a90e2;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-wrap">
+            <!-- Book & pen logo -->
+            <img src="c:\Users\user\Desktop\123\books 6.jpg" alt="site logo" class="logo">
+            <h1>Richardo's E-Library</h1>
+        </div>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#books">Books</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <button id="modeToggle" style="margin-left:20px;padding:6px 12px;border:none;border-radius:4px;cursor:pointer">🌙 Night Mode</button>
+    </nav>
+
+    <section id="home" class="hero" style="background:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66') center/cover no-repeat; box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.85);">
+        <h2 style="color: #000;">Welcome to Richardo' s E‑Library</h2>
+        <p style="color: #000;">Richardo's E‑Library is a
+            <b><u>free digital</u></b> reading space designed to support learning, research, and personal development. Our goal is to make quality educational resources easily accessible to everyone.</p>
+        <div class="stats">
+            <div class="stat-box">
+                <h3 id="users">0</h3>
+                <p>Total Users</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="reads">0</h3>
+                <p>Books Read</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="books">3850 +</h3>
+                <p>Available Books</p>
+            </div>
+            <button class="more-books" style="display:block;margin:60px auto 0;padding:6px 14px;font-size:0.9em;background:transparent;color:#4a90e2;border:1px solid #4a90e2;border-radius:20px;cursor:pointer;transition:.3s" onmouseover="this.style.background='#4a90e2';this.style.color='#fff'"
+                onmouseout="this.style.background='transparent';this.style.color='#4a90e2'">More Books</button>
+        </div>
+    </section>
+
+    <section id="books" class="library-bg">
+        <h2 style="text-align:center">Our Spiritual Library Collection</h2>
+        <p style="text-align:center;color:#555">Carefully selected books focused on spiritual growth, leadership development, and healthy marriages.</p>
+        <div style="text-align:center;margin:25px 0">
+            <span class="filter-btn" onclick="filterCategory('all')">All</span>
+            <span class="filter-btn" onclick="filterCategory('spiritual')">Spiritual</span>
+            <span class="filter-btn" onclick="filterCategory('leadership')">Leadership</span>
+            <span class="filter-btn" onclick="filterCategory('marriage')">Marriage</span>
+        </div>
+        <div style="text-align:center;margin-bottom:30px">
+            <input type="text" id="bookSearch" placeholder="Search books or authors..." style="padding:10px;width:55%;max-width:380px;border-radius:5px;border:1px solid #ccc">
+            <button id="searchBtn" style="padding:10px 18px;margin-left:8px;border:none;border-radius:5px;background:#4a90e2;color:#fff;cursor:pointer">Search</button>
+        </div>
+        <div id="books-section">
+            <div class="book-card" data-category="spiritual">
+                <img src="c:\Users\user\Desktop\123\books 2.jpg">
+                <h3>Intimacy with God</h3>
+                <p>Author: John J. Mercer</p>
+                <a class="read-button" target="_blank" href="c:\Users\user\OneDrive\Books\New books\Intimacy with God - Walk in the Holy Spirit ( PDFDrive.com ).pdf">Read</a>
+            </div>
+            <div class="book-card" data-category="spiritual">
+                <img src="c:\Users\user\Downloads\30 Secrets to the Top.jpeg">
+                <h3>30 Secrets To The Top</h3>
+                <p>Author: Paul Enenche</p>
+                <a class="read-button" target="_blank" href="c:\Users\user\OneDrive\Books\New books\30 Secrets To The Top - Paul Enenche(0) (1).pdf">Read</a>
+            </div>
+            <div class="book-card" data-category="leadership">
+                <img src="c:\Users\user\Downloads\Excellence in Leadership.jpeg">
+                <h3>Excellence in Leadership</h3>
+                <p>Author: Dag Heward-Mills</p>
+                <a class="read-button" target="_blank" href="c:\Users\user\OneDrive\Books\New books\Excellence in Leadership - Dag Heward-Mills-1.pdf">Read</a>
+            </div>
+            <div class="book-card" data-category="marriage">
+                <img src="c:\Users\user\Downloads\Marriage Covenant.jpeg">
+                <h3>Marriage Covenant</h3>
+                <p>Author: Bishop David Oyedepo</p>
+                <a class="read-button" target="_blank" href="c:\Users\user\OneDrive\Books\New books\Bishop Oyedepo__Marriage Covenant-1.pdf">Read</a>
+            </div>
+            <div class="book-card" data-category="marriage">
+                <img src="c:\Users\user\Downloads\How to Improve Your Marriage.jpeg">
+                <h3>How to Improve Your Marriage</h3>
+                <p>Author: Glenn & Steve Pease</p>
+                <a class="read-button" target="_blank" href="c:\Users\user\OneDrive\Books\New books\How to Improve Your Marriage  - Glenn   Steve Pease.pdf">Read</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Richardo's E‑Library</h2>
+        <p>Richardo's E‑Library was established to encourage reading, promote knowledge sharing, and support students in their academic journey. The platform provides free access to educational and informative digital books with the aim of shaping bright
+            minds and fostering lifelong learning.</p>
+        <p>The library is founded by <strong>Richardo Kingsford</strong>, a student of the <strong>University of Professional Studies, Accra (UPSA)</strong>. As a passionate advocate for education and digital accessibility, the founder envisioned a platform
+            that removes barriers to learning and empowers students through easily accessible reading resources.</p>
+    </section>
+
+    <hr style="border:0;height:2px;background:#b49601;margin:60px 0">
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>📞 <a href="tel:+233264454410">+233 264 454 410</a></p>
+        <p>📧 <a href="mailto:richardodarkomensah@gmail.com">richardodarkomensah@gmail.com</a></p>
+        <p>📸 <a href="https://instagram.com/richardodarkomensah" target="_blank">Instagram</a></p>
+        <p>📘 <a href="https://facebook.com/richardodarkomensah" target="_blank">Facebook</a></p>
+        <p>🎵 <a href="https://www.tiktok.com/@richardo.kingsford" target="_blank">TikTok</a></p>
+    </section>
+
+    <h5 style="border:0;height:2px;background:#b49601;margin:60px 0">
+        <section id="student details">
+            <h2>Student Details</h2>
+            <span style="font-family: 'Times New Roman', Times, serif; font-size: larger;">
+                Student Name: Mensah Kingsford Richardo Darko <br> Index Number:10322584
+                <br>Class: IT 10 Regular </span>
+        </section>
+
+        <footer>&copy; 2025 Richardo's E‑Library. All rights reserved....</footer>
+
+        <script>
+            /* Dark mode */
+            document.getElementById('modeToggle').onclick = () => {
+                document.body.classList.toggle('dark');
+            };
+
+            /* Book search */
+            document.getElementById('bookSearch').addEventListener('input', function() {
+                const q = this.value.toLowerCase();
+                document.querySelectorAll('.book-card').forEach(b => {
+                    b.style.display = b.innerText.toLowerCase().includes(q) ? 'block' : 'none';
+                });
+            });
+
+            /* Counters */
+            function counter(id, target) {
+                let c = 0;
+                let el = document.getElementById(id);
+                let i = setInterval(() => {
+                    c++;
+                    el.textContent = c;
+                    if (c >= target) clearInterval(i)
+                }, 20)
+            }
+            window.addEventListener('scroll', () => {
+                const s = document.querySelector('.stats').getBoundingClientRect().top;
+                if (s < window.innerHeight) {
+                    counter('users', 350);
+                    counter('reads', 1200)
+                }
+            }, {
+                once: true
+            });
+        </script>
+        <style>
+            .dark {
+                background: #111;
+            }
+            /* FORCE ALL TEXT TO WHITE IN NIGHT MODE */
+            
+            .dark,
+            .dark * {
+                color: #ffffff !important;
+            }
+            /* KEEP BOOKS SECTION HEADINGS & FILTERS BLACK IN NIGHT MODE */
+            
+            .dark .books-heading,
+            .dark .books-subtext {
+                color: #000 !important;
+            }
+            
+            .dark .filter-btn {
+                color: #fff !important;
+                /* same style as default */
+                border-color: #fff;
+            }
+            
+            .dark .filter-btn:hover {
+                background: #fff;
+                color: #000;
+            }
+            /* Ensure inputs and buttons are readable */
+            
+            .dark input,
+            .dark button {
+                background: #222 !important;
+                color: #ffffff !important;
+                border: 1px solid #555 !important;
+            }
+            /* Cards and boxes */
+            
+            .dark .book-card,
+            .dark .stat-box {
+                background: #1e1e1e !important;
+            }
+            /* Ensure inputs and buttons are readable */
+            
+            .dark input,
+            .dark button {
+                background: #222 !important;
+                color: #ffffff !important;
+                border: 1px solid #555 !important;
+            }
+            /* Cards and boxes */
+            
+            .dark .book-card,
+            .dark .stat-box {
+                background: #1e1e1e !important;
+            }
+            
+            .dark * {
+                color: #ffffff !important;
+                /* force all writings to white */
+            }
+            
+            .dark header,
+            .dark nav,
+            .dark footer {
+                background: #000
+            }
+            
+            .dark .book-card,
+            .dark .stat-box {
+                background: #1e1e1e
+            }
+            
+            .dark header,
+            .dark nav,
+            .dark footer {
+                background: #000
+            }
+            
+            .dark .book-card,
+            .dark .stat-box {
+                background: #1e1e1e;
+                color: #eee
+            }
+        </style>
+</body>
+
+</html>
